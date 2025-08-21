@@ -4,6 +4,7 @@ import LoginScreen from './components/LoginScreen';
 import PipelineDashboard from './components/PipelineDashboard';
 import ImageUpload from './components/ImageUpload';
 import EnhancedImageViewer from './components/EnhancedImageViewer';
+import SkaiAnalysis from './components/SkaiAnalysis';
 import DamageSummary from './components/DamageSummary';
 import VulnerabilityMap from './components/VulnerabilityMap';
 import ChatAssistant from './components/ChatAssistant';
@@ -45,12 +46,13 @@ const AppContent: React.FC = () => {
           <div className="lg:col-span-2 space-y-8">
             <ImageUpload onUpload={() => setActiveStep(1)} />
             <EnhancedImageViewer onEnhancementComplete={() => setActiveStep(2)} />
+            <SkaiAnalysis onAnalysisComplete={() => setActiveStep(3)} />
             <VulnerabilityMap />
           </div>
 
           {/* Right Column */}
           <div className="space-y-8">
-            <DamageSummary onSummaryComplete={() => setActiveStep(3)} />
+            <DamageSummary onSummaryComplete={() => setActiveStep(4)} />
             <ChatAssistant />
             <ReportDownload />
           </div>

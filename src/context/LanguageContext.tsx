@@ -108,7 +108,6 @@ const translations: Record<string, Record<string, string>> = {
     startEnhancement: 'Iniciar Mejora',
     processing: 'Procesando con GAN...',
     enhancementComplete: '¡Mejora Completada!',
-    damageAreasDetected: 'Detectadas {{count}} áreas de daño',
     downloadEnhanced: 'Descargar Mejorada',
     damageSummary: 'Resumen de Daños IA',
     generateSummaryPrompt: 'Generar evaluación de daños con IA',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Upload, Zap, FileText, Download, CheckCircle, Circle } from 'lucide-react';
+import { Upload, Zap, Brain, FileText, Download, CheckCircle, Circle } from 'lucide-react';
 
 interface PipelineDashboardProps {
   activeStep: number;
@@ -10,7 +10,8 @@ const PipelineDashboard: React.FC<PipelineDashboardProps> = ({ activeStep, setAc
   const steps = [
     { icon: Upload, label: 'Upload Images', desc: 'Pre & Post Disaster' },
     { icon: Zap, label: 'GAN Enhancement', desc: 'Image Processing' },
-    { icon: FileText, label: 'SKAI Analysis', desc: 'Damage Assessment' },
+    { icon: Brain, label: 'SKAI Analysis', desc: 'Damage Detection' },
+    { icon: FileText, label: 'AI Summary', desc: 'Damage Assessment' },
     { icon: Download, label: 'Generate Report', desc: 'Final Output' }
   ];
 
