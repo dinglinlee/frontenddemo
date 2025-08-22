@@ -43,21 +43,21 @@ const ReportDownload: React.FC = () => {
   };
 
   return (
-    <div className="glass rounded-xl shadow-2xl p-6 transition-all-smooth hover:shadow-neon-purple/20">
+    <div className="bg-white rounded-xl shadow-lg p-6">
       <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-        <Download className="w-5 h-5 mr-2 text-neon-purple" />
+        <Download className="w-5 h-5 mr-2 text-purple-600" />
         {translate('downloadReports')}
       </h3>
 
       {/* Report Summary */}
-      <div className="mb-6 p-4 glass-dark border border-neon-purple/30 rounded-lg">
+      <div className="mb-6 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 rounded-lg">
         <div className="flex items-center justify-between mb-2">
-          <h4 className="font-medium text-neon-purple">{translate('disasterReport')}</h4>
-          <span className="text-xs text-neon-purple bg-neon-purple/20 px-2 py-1 rounded border border-neon-purple/30">
+          <h4 className="font-medium text-purple-900">{translate('disasterReport')}</h4>
+          <span className="text-xs text-purple-700 bg-purple-200 px-2 py-1 rounded">
             {translate('completed')}
           </span>
         </div>
-        <div className="grid grid-cols-2 gap-2 text-xs text-gray-300">
+        <div className="grid grid-cols-2 gap-2 text-xs text-purple-800">
           <div className="flex items-center space-x-1">
             <Calendar className="w-3 h-3" />
             <span>{new Date().toLocaleDateString()}</span>
@@ -71,7 +71,7 @@ const ReportDownload: React.FC = () => {
 
       {/* Format Selection */}
       <div className="mb-6">
-        <h4 className="font-medium text-white mb-3">{translate('selectFormats')}</h4>
+        <h4 className="font-medium text-gray-900 mb-3">{translate('selectFormats')}</h4>
         <div className="space-y-2">
           {reportFormats.map((format) => {
             const Icon = format.icon;
@@ -82,8 +82,8 @@ const ReportDownload: React.FC = () => {
                 key={format.id}
                 className={`flex items-center justify-between p-3 border rounded-lg cursor-pointer transition-colors ${
                   isSelected
-                    ? 'border-neon-purple/50 bg-neon-purple/10'
-                    : 'border-white/20 hover:border-white/40'
+                    ? 'border-purple-300 bg-purple-50'
+                    : 'border-gray-200 hover:border-gray-300'
                 }`}
               >
                 <div className="flex items-center space-x-3">
@@ -91,18 +91,18 @@ const ReportDownload: React.FC = () => {
                     type="checkbox"
                     checked={isSelected}
                     onChange={() => handleFormatToggle(format.id)}
-                    className="w-4 h-4 text-neon-purple border-gray-300 rounded focus:ring-neon-purple"
+                    className="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
                   />
                   <Icon className={`w-4 h-4 ${
-                    isSelected ? 'text-neon-purple' : 'text-gray-400'
+                    isSelected ? 'text-purple-600' : 'text-gray-400'
                   }`} />
                   <span className={`text-sm font-medium ${
-                    isSelected ? 'text-white' : 'text-gray-300'
+                    isSelected ? 'text-purple-900' : 'text-gray-700'
                   }`}>
                     {format.name}
                   </span>
                 </div>
-                <span className="text-xs text-gray-400">{format.size}</span>
+                <span className="text-xs text-gray-500">{format.size}</span>
               </label>
             );
           })}
@@ -111,12 +111,12 @@ const ReportDownload: React.FC = () => {
 
       {/* Download Summary */}
       {selectedFormats.length > 0 && (
-        <div className="mb-6 p-3 glass-dark rounded-lg border border-white/10">
+        <div className="mb-6 p-3 bg-gray-50 rounded-lg">
           <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-300">
+            <span className="text-gray-600">
               {selectedFormats.length} {translate('itemsSelected')}
             </span>
-            <span className="font-medium text-white">
+            <span className="font-medium text-gray-900">
               {translate('totalSize')}: {getTotalSize()} MB
             </span>
           </div>
@@ -128,7 +128,7 @@ const ReportDownload: React.FC = () => {
         <button
           onClick={handleGenerateReport}
           disabled={selectedFormats.length === 0 || isGenerating}
-          className="flex-1 flex items-center justify-center space-x-2 px-4 py-3 bg-neon-purple text-white rounded-lg hover:bg-neon-purple/80 disabled:opacity-50 disabled:cursor-not-allowed transition-all-smooth neon-purple"
+          className="flex-1 flex items-center justify-center space-x-2 px-4 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           {isGenerating ? (
             <>
@@ -143,15 +143,15 @@ const ReportDownload: React.FC = () => {
           )}
         </button>
         
-        <button className="flex items-center justify-center space-x-2 px-4 py-3 glass-dark text-gray-300 rounded-lg hover:bg-white/20 transition-all-smooth border border-white/20">
+        <button className="flex items-center justify-center space-x-2 px-4 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
           <Share2 className="w-4 h-4" />
           <span>{translate('share')}</span>
         </button>
       </div>
 
       {/* Help Text */}
-      <div className="mt-4 p-3 glass-dark border border-neon-blue/30 rounded-lg">
-        <p className="text-xs text-neon-blue">
+      <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+        <p className="text-xs text-blue-800">
           {translate('downloadHelp')}
         </p>
       </div>

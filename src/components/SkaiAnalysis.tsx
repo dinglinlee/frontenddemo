@@ -89,21 +89,21 @@ const SkaiAnalysis: React.FC<SkaiAnalysisProps> = ({ onAnalysisComplete }) => {
   }
 
   return (
-    <div className="glass rounded-xl shadow-2xl p-6 transition-all-smooth hover:shadow-neon-purple/20">
+    <div className="bg-white rounded-xl shadow-lg p-6">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-semibold text-white flex items-center">
-          <Brain className="w-5 h-5 mr-2 text-neon-purple" />
+        <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+          <Brain className="w-5 h-5 mr-2 text-purple-600" />
           SKAI Damage Analysis
         </h3>
         
         <div className="flex items-center space-x-3">
-          <div className="flex glass-dark rounded-lg p-1">
+          <div className="flex bg-gray-100 rounded-lg p-1">
             <button
               onClick={() => setSelectedImage('pre')}
               className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
                 selectedImage === 'pre' 
-                  ? 'bg-white/20 text-white shadow-sm' 
-                  : 'text-gray-400 hover:text-white'
+                  ? 'bg-white text-gray-900 shadow-sm' 
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Pre-Disaster
@@ -112,8 +112,8 @@ const SkaiAnalysis: React.FC<SkaiAnalysisProps> = ({ onAnalysisComplete }) => {
               onClick={() => setSelectedImage('post')}
               className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
                 selectedImage === 'post' 
-                  ? 'bg-white/20 text-white shadow-sm' 
-                  : 'text-gray-400 hover:text-white'
+                  ? 'bg-white text-gray-900 shadow-sm' 
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Post-Disaster
@@ -126,24 +126,24 @@ const SkaiAnalysis: React.FC<SkaiAnalysisProps> = ({ onAnalysisComplete }) => {
         {/* Image Analysis View */}
         <div className="lg:col-span-2 space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium text-white">Satellite Image Analysis</h4>
+            <h4 className="font-medium text-gray-900">Satellite Image Analysis</h4>
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setZoom(Math.max(50, zoom - 25))}
-                className="p-1 text-gray-400 hover:text-white transition-colors"
+                className="p-1 text-gray-500 hover:text-gray-700"
               >
                 <ZoomOut className="w-4 h-4" />
               </button>
-              <span className="text-sm text-gray-300">{zoom}%</span>
+              <span className="text-sm text-gray-500">{zoom}%</span>
               <button
                 onClick={() => setZoom(Math.min(200, zoom + 25))}
-                className="p-1 text-gray-400 hover:text-white transition-colors"
+                className="p-1 text-gray-500 hover:text-gray-700"
               >
                 <ZoomIn className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setZoom(100)}
-                className="p-1 text-gray-400 hover:text-white transition-colors"
+                className="p-1 text-gray-500 hover:text-gray-700"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
@@ -152,8 +152,8 @@ const SkaiAnalysis: React.FC<SkaiAnalysisProps> = ({ onAnalysisComplete }) => {
                   onClick={() => setShowDamageOverlay(!showDamageOverlay)}
                   className={`flex items-center space-x-1 px-2 py-1 rounded text-sm ${
                     showDamageOverlay 
-                      ? 'bg-red-500/20 text-red-400' 
-                      : 'bg-white/10 text-gray-400'
+                      ? 'bg-red-100 text-red-700' 
+                      : 'bg-gray-100 text-gray-700'
                   }`}
                 >
                   <Layers className="w-3 h-3" />
@@ -163,7 +163,7 @@ const SkaiAnalysis: React.FC<SkaiAnalysisProps> = ({ onAnalysisComplete }) => {
             </div>
           </div>
           
-          <div className="relative aspect-video glass-dark rounded-lg overflow-hidden border-2 border-white/10">
+          <div className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden border-2 border-gray-200">
             {!showAnalysis ? (
               <div className="relative w-full h-full">
                 <img
@@ -173,21 +173,21 @@ const SkaiAnalysis: React.FC<SkaiAnalysisProps> = ({ onAnalysisComplete }) => {
                   style={{ transform: `scale(${zoom / 100})` }}
                 />
                 
-                <div className="absolute inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm">
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
                   {!isAnalyzing ? (
                     <button
                       onClick={handleAnalyze}
-                      className="flex items-center space-x-2 px-6 py-3 bg-neon-purple text-white rounded-lg hover:bg-neon-purple/80 transition-all-smooth neon-purple"
+                      className="flex items-center space-x-2 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
                     >
                       <Target className="w-5 h-5" />
                       <span>Detect Damage</span>
                     </button>
                   ) : (
                     <div className="text-center text-white">
-                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-neon-purple mx-auto mb-4"></div>
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
                       <p className="mb-2">Analyzing with SKAI...</p>
-                      <div className="w-48 bg-white/20 rounded-full h-2">
-                        <div className="bg-neon-purple h-2 rounded-full animate-pulse" style={{ width: '80%' }}></div>
+                      <div className="w-48 bg-gray-200 bg-opacity-30 rounded-full h-2">
+                        <div className="bg-purple-400 h-2 rounded-full animate-pulse" style={{ width: '80%' }}></div>
                       </div>
                     </div>
                   )}
@@ -242,31 +242,31 @@ const SkaiAnalysis: React.FC<SkaiAnalysisProps> = ({ onAnalysisComplete }) => {
 
         {/* Analysis Results Panel */}
         <div className="space-y-4">
-          <h4 className="font-medium text-white">Analysis Results</h4>
+          <h4 className="font-medium text-gray-900">Analysis Results</h4>
           
           {!showAnalysis ? (
             <div className="text-center py-8">
-              <AlertTriangle className="w-8 h-8 text-gray-500 mx-auto mb-3" />
-              <p className="text-sm text-gray-400">Run damage detection to see results</p>
+              <AlertTriangle className="w-8 h-8 text-gray-400 mx-auto mb-3" />
+              <p className="text-sm text-gray-500">Run damage detection to see results</p>
             </div>
           ) : (
             <div className="space-y-3">
               {/* Summary Stats */}
-              <div className="p-3 glass-dark border border-neon-purple/30 rounded-lg">
+              <div className="p-3 bg-purple-50 border border-purple-200 rounded-lg">
                 <div className="text-sm">
                   <div className="flex justify-between mb-1">
-                    <span className="text-neon-purple">Damaged Areas:</span>
-                    <span className="font-medium text-white">{damageAreas.length}</span>
+                    <span className="text-purple-700">Damaged Areas:</span>
+                    <span className="font-medium text-purple-900">{damageAreas.length}</span>
                   </div>
                   <div className="flex justify-between mb-1">
-                    <span className="text-neon-purple">Buildings Affected:</span>
-                    <span className="font-medium text-white">
+                    <span className="text-purple-700">Buildings Affected:</span>
+                    <span className="font-medium text-purple-900">
                       {damageAreas.reduce((sum, area) => sum + area.buildingCount, 0)}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-neon-purple">Avg. Confidence:</span>
-                    <span className="font-medium text-white">
+                    <span className="text-purple-700">Avg. Confidence:</span>
+                    <span className="font-medium text-purple-900">
                       {Math.round(damageAreas.reduce((sum, area) => sum + area.confidence, 0) / damageAreas.length * 100)}%
                     </span>
                   </div>
@@ -280,8 +280,8 @@ const SkaiAnalysis: React.FC<SkaiAnalysisProps> = ({ onAnalysisComplete }) => {
                     key={area.id}
                     className={`p-3 border rounded-lg cursor-pointer transition-all ${
                       selectedDamageArea === area.id
-                        ? 'border-neon-purple bg-neon-purple/10'
-                        : 'border-white/20 hover:border-neon-purple/50'
+                        ? 'border-purple-300 bg-purple-50'
+                        : 'border-gray-200 hover:border-gray-300'
                     }`}
                     onClick={() => setSelectedDamageArea(
                       selectedDamageArea === area.id ? null : area.id
@@ -295,19 +295,19 @@ const SkaiAnalysis: React.FC<SkaiAnalysisProps> = ({ onAnalysisComplete }) => {
                         }`} />
                         <span className="font-medium text-sm">Area {area.id}</span>
                       </div>
-                      <span className="text-xs text-gray-400">{Math.round(area.confidence * 100)}%</span>
+                      <span className="text-xs text-gray-500">{Math.round(area.confidence * 100)}%</span>
                     </div>
                     
-                    <div className="text-xs text-gray-300 mb-1">
+                    <div className="text-xs text-gray-600 mb-1">
                       <strong>{area.type}</strong>
                     </div>
                     
-                    <div className="text-xs text-gray-400">
+                    <div className="text-xs text-gray-500">
                       {area.description}
                     </div>
                     
                     {area.buildingCount > 0 && (
-                      <div className="text-xs text-gray-400 mt-1">
+                      <div className="text-xs text-gray-500 mt-1">
                         {area.buildingCount} buildings affected
                       </div>
                     )}
@@ -320,16 +320,16 @@ const SkaiAnalysis: React.FC<SkaiAnalysisProps> = ({ onAnalysisComplete }) => {
       </div>
 
       {showAnalysis && (
-        <div className="mt-6 flex items-center justify-between p-4 glass-dark border border-neon-purple/30 rounded-lg">
+        <div className="mt-6 flex items-center justify-between p-4 bg-purple-50 border border-purple-200 rounded-lg">
           <div className="flex items-center space-x-3">
             <div className="flex-shrink-0">
-              <div className="w-8 h-8 bg-neon-purple/20 rounded-full flex items-center justify-center">
-                <Eye className="w-4 h-4 text-neon-purple" />
+              <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                <Eye className="w-4 h-4 text-purple-600" />
               </div>
             </div>
             <div>
-              <h4 className="font-medium text-neon-purple">SKAI Analysis Complete</h4>
-              <p className="text-sm text-gray-300">
+              <h4 className="font-medium text-purple-900">SKAI Analysis Complete</h4>
+              <p className="text-sm text-purple-700">
                 Detected {damageAreas.length} damage areas with {damageAreas.reduce((sum, area) => sum + area.buildingCount, 0)} affected buildings
               </p>
             </div>

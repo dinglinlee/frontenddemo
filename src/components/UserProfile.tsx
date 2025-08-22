@@ -24,7 +24,7 @@ const UserProfile: React.FC = () => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-3 p-2 rounded-lg hover:bg-white/10 transition-all-smooth"
+        className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-100 transition-colors"
       >
         <div className="relative">
           {user.avatar ? (
@@ -42,13 +42,13 @@ const UserProfile: React.FC = () => {
         </div>
         
         <div className="hidden md:block text-left">
-          <p className="text-sm font-medium text-white">{user.name}</p>
-          <p className="text-xs text-gray-300">{user.organization}</p>
+          <p className="text-sm font-medium text-gray-900">{user.name}</p>
+          <p className="text-xs text-gray-500">{user.organization}</p>
         </div>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 glass rounded-xl shadow-2xl border border-white/20 z-50">
+        <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-lg border border-gray-200 z-50">
           {/* Profile Header */}
           <div className={`p-4 bg-gradient-to-r from-${orgColor}-500 to-${orgColor}-600 rounded-t-xl`}>
             <div className="flex items-center space-x-3">
@@ -75,33 +75,33 @@ const UserProfile: React.FC = () => {
             <div className="flex items-center space-x-3 text-sm">
               <Building className="w-4 h-4 text-gray-400" />
               <div>
-                <span className="text-gray-400">Organization:</span>
-                <span className="ml-2 font-medium text-white">{user.organization}</span>
+                <span className="text-gray-600">Organization:</span>
+                <span className="ml-2 font-medium text-gray-900">{user.organization}</span>
               </div>
             </div>
             
             <div className="flex items-center space-x-3 text-sm">
               <MapPin className="w-4 h-4 text-gray-400" />
               <div>
-                <span className="text-gray-400">Region:</span>
-                <span className="ml-2 font-medium text-white">{user.region}</span>
+                <span className="text-gray-600">Region:</span>
+                <span className="ml-2 font-medium text-gray-900">{user.region}</span>
               </div>
             </div>
             
             <div className="flex items-center space-x-3 text-sm">
               <Shield className="w-4 h-4 text-gray-400" />
               <div>
-                <span className="text-gray-400">Access Level:</span>
-                <span className="ml-2 font-medium text-neon-green">Authorized</span>
+                <span className="text-gray-600">Access Level:</span>
+                <span className="ml-2 font-medium text-green-600">Authorized</span>
               </div>
             </div>
           </div>
 
           {/* Actions */}
-          <div className="border-t border-white/20 p-2">
+          <div className="border-t border-gray-200 p-2">
             <button
               onClick={() => setIsOpen(false)}
-              className="w-full flex items-center space-x-3 px-3 py-2 text-sm text-gray-300 hover:bg-white/10 rounded-lg transition-colors"
+              className="w-full flex items-center space-x-3 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
             >
               <Settings className="w-4 h-4" />
               <span>Settings</span>
@@ -112,7 +112,7 @@ const UserProfile: React.FC = () => {
                 logout();
                 setIsOpen(false);
               }}
-              className="w-full flex items-center space-x-3 px-3 py-2 text-sm text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
+              className="w-full flex items-center space-x-3 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
             >
               <LogOut className="w-4 h-4" />
               <span>Sign Out</span>

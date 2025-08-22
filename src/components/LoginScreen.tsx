@@ -75,77 +75,70 @@ const LoginScreen: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-950 via-dark-900 to-dark-800 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-blue/5 rounded-full blur-3xl animate-float" />
-        <div className="absolute top-3/4 right-1/4 w-64 h-64 bg-neon-purple/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-3/4 w-48 h-48 bg-neon-cyan/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
-      </div>
-      
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex items-center justify-center p-4">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         
         {/* Left Side - Branding & Info */}
         <div className="text-center lg:text-left space-y-8">
           <div className="flex items-center justify-center lg:justify-start space-x-3">
             <div className="relative">
-              <Shield className="w-12 h-12 text-neon-blue animate-glow" />
-              <Satellite className="w-6 h-6 text-neon-orange absolute -top-1 -right-1 animate-pulse" />
+              <Shield className="w-12 h-12 text-blue-600" />
+              <Satellite className="w-6 h-6 text-orange-500 absolute -top-1 -right-1" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-white">SKAI Response</h1>
-              <p className="text-gray-300">AI Disaster Assessment Platform</p>
+              <h1 className="text-3xl font-bold text-gray-900">SKAI Response</h1>
+              <p className="text-gray-600">AI Disaster Assessment Platform</p>
             </div>
           </div>
 
           <div className="space-y-6">
-            <h2 className="text-2xl font-semibold text-white">
+            <h2 className="text-2xl font-semibold text-gray-900">
               Humanitarian Operations Dashboard
             </h2>
-            <p className="text-lg text-gray-300 leading-relaxed">
+            <p className="text-lg text-gray-600 leading-relaxed">
               Advanced AI-powered platform integrating satellite imagery analysis, 
               GAN enhancement, and multilingual support for rapid disaster response 
               and humanitarian coordination.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex items-center space-x-3 p-4 glass rounded-lg">
-                <div className="w-10 h-10 bg-neon-blue/20 rounded-lg flex items-center justify-center">
-                  <Satellite className="w-5 h-5 text-neon-blue" />
+              <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
+                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <Satellite className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-white">SKAI Analysis</h3>
-                  <p className="text-sm text-gray-300">Automated damage detection</p>
+                  <h3 className="font-medium text-gray-900">SKAI Analysis</h3>
+                  <p className="text-sm text-gray-600">Automated damage detection</p>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-3 p-4 glass rounded-lg">
-                <div className="w-10 h-10 bg-neon-orange/20 rounded-lg flex items-center justify-center">
-                  <Eye className="w-5 h-5 text-neon-orange" />
+              <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
+                <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                  <Eye className="w-5 h-5 text-orange-600" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-white">GAN Enhancement</h3>
-                  <p className="text-sm text-gray-300">Image quality improvement</p>
+                  <h3 className="font-medium text-gray-900">GAN Enhancement</h3>
+                  <p className="text-sm text-gray-600">Image quality improvement</p>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-3 p-4 glass rounded-lg">
-                <div className="w-10 h-10 bg-neon-green/20 rounded-lg flex items-center justify-center">
-                  <Globe className="w-5 h-5 text-neon-green" />
+              <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
+                <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                  <Globe className="w-5 h-5 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-white">Multilingual AI</h3>
-                  <p className="text-sm text-gray-300">GPT-powered assistance</p>
+                  <h3 className="font-medium text-gray-900">Multilingual AI</h3>
+                  <p className="text-sm text-gray-600">GPT-powered assistance</p>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-3 p-4 glass rounded-lg">
-                <div className="w-10 h-10 bg-neon-purple/20 rounded-lg flex items-center justify-center">
-                  <Users className="w-5 h-5 text-neon-purple" />
+              <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
+                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <Users className="w-5 h-5 text-purple-600" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-white">Population Maps</h3>
-                  <p className="text-sm text-gray-300">Vulnerability analysis</p>
+                  <h3 className="font-medium text-gray-900">Population Maps</h3>
+                  <p className="text-sm text-gray-600">Vulnerability analysis</p>
                 </div>
               </div>
             </div>
@@ -153,15 +146,15 @@ const LoginScreen: React.FC = () => {
         </div>
 
         {/* Right Side - Login Form */}
-        <div className="glass rounded-2xl shadow-2xl p-8 neon-blue">
+        <div className="bg-white rounded-2xl shadow-xl p-8">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-white mb-2">Secure Access</h3>
-            <p className="text-gray-300">Sign in with your humanitarian organization credentials</p>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">Secure Access</h3>
+            <p className="text-gray-600">Sign in with your humanitarian organization credentials</p>
           </div>
 
           {/* Demo Accounts */}
           <div className="mb-6">
-            <h4 className="text-sm font-medium text-gray-300 mb-3">Demo Accounts:</h4>
+            <h4 className="text-sm font-medium text-gray-700 mb-3">Demo Accounts:</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {demoAccounts.map((account) => {
                 const Icon = account.icon;
@@ -169,17 +162,17 @@ const LoginScreen: React.FC = () => {
                   <button
                     key={account.id}
                     onClick={() => handleDemoLogin(account)}
-                    className={`p-3 text-left border rounded-lg hover:shadow-md transition-all-smooth ${
+                    className={`p-3 text-left border rounded-lg hover:shadow-md transition-all ${
                       selectedDemo === account.id 
-                        ? `border-${account.color}-400/50 bg-${account.color}-500/10` 
-                        : 'border-white/20 hover:border-white/40'
+                        ? `border-${account.color}-300 bg-${account.color}-50` 
+                        : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
                     <div className="flex items-center space-x-2">
                       <Icon className={`w-4 h-4 text-${account.color}-600`} />
                       <div className="min-w-0 flex-1">
-                        <p className="text-xs font-medium text-white truncate">{account.org}</p>
-                        <p className="text-xs text-gray-300 truncate">{account.region}</p>
+                        <p className="text-xs font-medium text-gray-900 truncate">{account.org}</p>
+                        <p className="text-xs text-gray-600 truncate">{account.region}</p>
                       </div>
                     </div>
                   </button>
@@ -190,7 +183,7 @@ const LoginScreen: React.FC = () => {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
                 Username
               </label>
               <input
@@ -198,14 +191,14 @@ const LoginScreen: React.FC = () => {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-4 py-3 glass-dark border border-white/20 rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent text-white placeholder-gray-400"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="organization.username"
                 disabled={isLoading}
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                 Password
               </label>
               <div className="relative">
@@ -214,14 +207,14 @@ const LoginScreen: React.FC = () => {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 pr-12 glass-dark border border-white/20 rounded-lg focus:ring-2 focus:ring-neon-blue focus:border-transparent text-white placeholder-gray-400"
+                  className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="Enter your password"
                   disabled={isLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                   disabled={isLoading}
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -230,16 +223,16 @@ const LoginScreen: React.FC = () => {
             </div>
 
             {error && (
-              <div className="flex items-center space-x-2 p-3 glass-dark border border-red-500/30 rounded-lg">
-                <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
-                <p className="text-sm text-red-300">{error}</p>
+              <div className="flex items-center space-x-2 p-3 bg-red-50 border border-red-200 rounded-lg">
+                <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+                <p className="text-sm text-red-700">{error}</p>
               </div>
             )}
 
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-neon-blue text-white rounded-lg hover:bg-neon-blue/80 focus:ring-2 focus:ring-neon-blue focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all-smooth neon-blue"
+              className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isLoading ? (
                 <>
@@ -255,8 +248,8 @@ const LoginScreen: React.FC = () => {
             </button>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-white/20">
-            <p className="text-xs text-gray-400 text-center">
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <p className="text-xs text-gray-500 text-center">
               This is a demonstration platform. In production, authentication would be 
               integrated with your organization's identity management system.
             </p>

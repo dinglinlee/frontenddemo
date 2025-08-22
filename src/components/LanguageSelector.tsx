@@ -10,7 +10,7 @@ const LanguageSelector: React.FC = () => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 text-sm glass hover:bg-white/20 rounded-lg transition-all-smooth text-white"
+        className="flex items-center space-x-2 px-3 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
       >
         <Languages className="w-4 h-4" />
         <span>{languages.find(l => l.code === currentLanguage)?.name}</span>
@@ -18,7 +18,7 @@ const LanguageSelector: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 glass rounded-lg shadow-2xl border border-white/20 z-50">
+        <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
           {languages.map((lang) => (
             <button
               key={lang.code}
@@ -26,8 +26,8 @@ const LanguageSelector: React.FC = () => {
                 setLanguage(lang.code);
                 setIsOpen(false);
               }}
-              className={`w-full text-left px-4 py-2 text-sm hover:bg-white/10 first:rounded-t-lg last:rounded-b-lg transition-colors ${
-                currentLanguage === lang.code ? 'bg-neon-blue/20 text-neon-blue' : 'text-gray-300'
+              className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 first:rounded-t-lg last:rounded-b-lg ${
+                currentLanguage === lang.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
               }`}
             >
               <span className="mr-2">{lang.flag}</span>
