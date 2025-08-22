@@ -10,6 +10,7 @@ const Header: React.FC = () => {
   return (
     <header className="glass-panel border-b border-white/10 backdrop-blur-xl relative">
       <div className="absolute inset-0 bg-gradient-to-r from-neon-blue/5 via-transparent to-neon-purple/5"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-neon-blue/5 via-transparent to-neon-purple/5"></div>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 relative z-10">
           <div className="flex items-center space-x-3">
