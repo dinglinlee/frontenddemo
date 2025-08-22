@@ -26,41 +26,41 @@ const EnhancedImageViewer: React.FC<EnhancedImageViewerProps> = ({ onEnhancement
 
   if (!images.length) {
     return (
-      <div className="bg-white rounded-xl shadow-lg p-6">
+      <div className="card-futuristic rounded-xl p-6">
         <div className="text-center py-8">
-          <Zap className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-          <p className="text-gray-500">{translate('uploadImagesFirst')}</p>
+          <Zap className="w-12 h-12 text-gray-400 mx-auto mb-4 animate-float" />
+          <p className="text-gray-400">{translate('uploadImagesFirst')}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
+    <div className="card-futuristic rounded-xl p-6 hover-lift transition-glow">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-          <Zap className="w-5 h-5 mr-2 text-orange-600" />
+        <h3 className="text-lg font-semibold text-gray-100 flex items-center">
+          <Zap className="w-5 h-5 mr-2 text-neon-orange animate-pulse" />
           {translate('ganEnhancement')}
         </h3>
         
         <div className="flex items-center space-x-3">
-          <div className="flex bg-gray-100 rounded-lg p-1">
+          <div className="flex glass-panel rounded-lg p-1">
             <button
               onClick={() => setSelectedImage('pre')}
-              className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+              className={`px-3 py-1 rounded text-sm font-medium transition-all-smooth ${
                 selectedImage === 'pre' 
-                  ? 'bg-white text-gray-900 shadow-sm' 
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-neon-blue text-white shadow-glow' 
+                  : 'text-gray-300 hover:text-white hover:bg-white/10'
               }`}
             >
               Pre-Disaster
             </button>
             <button
               onClick={() => setSelectedImage('post')}
-              className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+              className={`px-3 py-1 rounded text-sm font-medium transition-all-smooth ${
                 selectedImage === 'post' 
-                  ? 'bg-white text-gray-900 shadow-sm' 
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-neon-blue text-white shadow-glow' 
+                  : 'text-gray-300 hover:text-white hover:bg-white/10'
               }`}
             >
               Post-Disaster
@@ -73,35 +73,35 @@ const EnhancedImageViewer: React.FC<EnhancedImageViewerProps> = ({ onEnhancement
         {/* Original Image */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium text-gray-900">{translate('originalImage')}</h4>
+            <h4 className="font-medium text-gray-100">{translate('originalImage')}</h4>
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setZoom(Math.max(50, zoom - 25))}
-                className="p-1 text-gray-500 hover:text-gray-700"
+                className="p-1 text-gray-400 hover:text-neon-blue transition-colors"
               >
                 <ZoomOut className="w-4 h-4" />
               </button>
-              <span className="text-sm text-gray-500">{zoom}%</span>
+              <span className="text-sm text-gray-300">{zoom}%</span>
               <button
                 onClick={() => setZoom(Math.min(200, zoom + 25))}
-                className="p-1 text-gray-500 hover:text-gray-700"
+                className="p-1 text-gray-400 hover:text-neon-blue transition-colors"
               >
                 <ZoomIn className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setZoom(100)}
-                className="p-1 text-gray-500 hover:text-gray-700"
+                className="p-1 text-gray-400 hover:text-neon-blue transition-colors"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
             </div>
           </div>
           
-          <div className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden">
+          <div className="relative aspect-video glass-dark rounded-lg overflow-hidden border border-white/20">
             <img
               src={images.find(img => img.type === selectedImage)?.url}
               alt={`${selectedImage} disaster`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-300"
               style={{ transform: `scale(${zoom / 100})` }}
             />
           </div>
@@ -110,29 +110,29 @@ const EnhancedImageViewer: React.FC<EnhancedImageViewerProps> = ({ onEnhancement
         {/* Enhanced/Processing */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium text-gray-900">{translate('enhancedImage')}</h4>
+            <h4 className="font-medium text-gray-100">{translate('enhancedImage')}</h4>
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-500">Quality Enhanced</span>
+              <span className="text-sm text-neon-green">Quality Enhanced</span>
             </div>
           </div>
           
-          <div className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden">
+          <div className="relative aspect-video glass-dark rounded-lg overflow-hidden border border-white/20">
             {!showEnhanced ? (
               <div className="flex items-center justify-center h-full">
                 {!isProcessing ? (
                   <button
                     onClick={handleEnhance}
-                    className="flex items-center space-x-2 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
+                    className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-neon-orange to-neon-yellow text-white rounded-lg hover-glow transition-glow"
                   >
                     <Zap className="w-5 h-5" />
                     <span>{translate('startEnhancement')}</span>
                   </button>
                 ) : (
                   <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
-                    <p className="text-gray-600">{translate('processing')}</p>
-                    <div className="w-48 bg-gray-200 rounded-full h-2 mt-3">
-                      <div className="bg-orange-600 h-2 rounded-full animate-pulse" style={{ width: '75%' }}></div>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-neon-orange mx-auto mb-4 neon-orange"></div>
+                    <p className="text-gray-300">{translate('processing')}</p>
+                    <div className="w-48 progress-futuristic rounded-full h-2 mt-3">
+                      <div className="bg-gradient-to-r from-neon-orange to-neon-yellow h-2 rounded-full animate-pulse" style={{ width: '75%' }}></div>
                     </div>
                   </div>
                 )}
@@ -142,7 +142,7 @@ const EnhancedImageViewer: React.FC<EnhancedImageViewerProps> = ({ onEnhancement
                 <img
                   src={images.find(img => img.type === selectedImage)?.url}
                   alt="Enhanced"
-                  className="w-full h-full object-cover filter brightness-110 contrast-125 saturate-110"
+                  className="w-full h-full object-cover filter brightness-110 contrast-125 saturate-110 transition-transform duration-300"
                   style={{ transform: `scale(${zoom / 100})` }}
                 />
               </div>
@@ -152,20 +152,20 @@ const EnhancedImageViewer: React.FC<EnhancedImageViewerProps> = ({ onEnhancement
       </div>
 
       {showEnhanced && (
-        <div className="mt-6 flex items-center justify-between p-4 bg-green-50 border border-green-200 rounded-lg">
+        <div className="mt-6 flex items-center justify-between p-4 glass-panel border border-neon-green/30 rounded-lg hover-glow transition-glow">
           <div className="flex items-center space-x-3">
             <div className="flex-shrink-0">
-              <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-                <Zap className="w-4 h-4 text-orange-600" />
+              <div className="w-8 h-8 bg-neon-orange/20 rounded-full flex items-center justify-center border border-neon-orange/30">
+                <Zap className="w-4 h-4 text-neon-orange" />
               </div>
             </div>
             <div>
-              <h4 className="font-medium text-green-900">{translate('enhancementComplete')}</h4>
-              <p className="text-sm text-green-700">Image quality enhanced with improved clarity and contrast</p>
+              <h4 className="font-medium text-neon-green">{translate('enhancementComplete')}</h4>
+              <p className="text-sm text-gray-300">Image quality enhanced with improved clarity and contrast</p>
             </div>
           </div>
           
-          <button className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+          <button className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-neon-green to-neon-cyan text-white rounded-lg hover-glow transition-glow">
             <Download className="w-4 h-4" />
             <span>{translate('downloadEnhanced')}</span>
           </button>

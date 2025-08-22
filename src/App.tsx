@@ -33,7 +33,14 @@ const AppContent: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dark-950 via-dark-900 to-dark-800">
+    <div className="min-h-screen bg-gradient-to-br from-dark-950 via-dark-900 to-dark-800 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-blue opacity-5 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-neon-purple opacity-5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-neon-cyan opacity-5 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
+      </div>
+      
       <Header />
       
       <main className="container mx-auto px-4 py-8">
