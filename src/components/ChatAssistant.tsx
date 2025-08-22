@@ -89,14 +89,14 @@ const ChatAssistant: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
+    <div className="glass rounded-xl shadow-2xl p-6 transition-all-smooth hover:shadow-neon-cyan/20">
       <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-        <MessageCircle className="w-5 h-5 mr-2 text-indigo-600" />
+        <MessageCircle className="w-5 h-5 mr-2 text-neon-cyan" />
         {translate('aiAssistant')}
       </h3>
 
       {/* Chat Messages */}
-      <div className="h-64 overflow-y-auto mb-4 p-3 bg-gray-50 rounded-lg">
+      <div className="h-64 overflow-y-auto mb-4 p-3 glass-dark rounded-lg border border-white/10">
         {messages.map((message) => (
           <div
             key={message.id}
@@ -106,8 +106,8 @@ const ChatAssistant: React.FC = () => {
           >
             <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
               message.sender === 'user' 
-                ? 'bg-blue-600 text-white' 
-                : 'bg-indigo-100 text-indigo-600'
+                ? 'bg-neon-blue text-white' 
+                : 'bg-neon-cyan/20 text-neon-cyan'
             }`}>
               {message.sender === 'user' ? (
                 <User className="w-4 h-4" />
@@ -121,8 +121,8 @@ const ChatAssistant: React.FC = () => {
             }`}>
               <div className={`inline-block px-4 py-2 rounded-lg text-sm ${
                 message.sender === 'user'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-900 border border-gray-200'
+                  ? 'bg-neon-blue text-white'
+                  : 'glass text-white border border-white/20'
               }`}>
                 {message.text}
               </div>
@@ -140,14 +140,14 @@ const ChatAssistant: React.FC = () => {
         
         {isTyping && (
           <div className="flex items-center space-x-3 mb-4">
-            <div className="flex-shrink-0 w-8 h-8 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center">
+            <div className="flex-shrink-0 w-8 h-8 bg-neon-cyan/20 text-neon-cyan rounded-full flex items-center justify-center">
               <Bot className="w-4 h-4" />
             </div>
-            <div className="bg-white border border-gray-200 rounded-lg px-4 py-2">
+            <div className="glass border border-white/20 rounded-lg px-4 py-2">
               <div className="flex space-x-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                <div className="w-2 h-2 bg-neon-cyan rounded-full animate-bounce" />
+                <div className="w-2 h-2 bg-neon-cyan rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
+                <div className="w-2 h-2 bg-neon-cyan rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
               </div>
             </div>
           </div>
@@ -157,13 +157,13 @@ const ChatAssistant: React.FC = () => {
 
       {/* Quick Questions */}
       <div className="mb-4">
-        <p className="text-xs text-gray-600 mb-2">{translate('quickQuestions')}:</p>
+        <p className="text-xs text-gray-300 mb-2">{translate('quickQuestions')}:</p>
         <div className="flex flex-wrap gap-2">
           {quickQuestions.map((question, index) => (
             <button
               key={index}
               onClick={() => handleSendMessage(question)}
-              className="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded-full transition-colors"
+              className="px-3 py-1 glass-dark hover:bg-white/20 text-gray-300 text-xs rounded-full transition-colors border border-white/10"
             >
               {question}
             </button>
@@ -179,10 +179,10 @@ const ChatAssistant: React.FC = () => {
             onChange={(e) => setInputText(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder={translate('typeMessage')}
-            className="w-full px-4 py-2 pr-12 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            className="w-full px-4 py-2 pr-12 glass-dark border border-white/20 rounded-lg resize-none focus:ring-2 focus:ring-neon-cyan focus:border-transparent text-white placeholder-gray-400"
             rows={1}
           />
-          <button className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600">
+          <button className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1 text-gray-400 hover:text-white transition-colors">
             <Mic className="w-4 h-4" />
           </button>
         </div>
@@ -190,7 +190,7 @@ const ChatAssistant: React.FC = () => {
         <button
           onClick={() => handleSendMessage()}
           disabled={!inputText.trim()}
-          className="p-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="p-2 bg-neon-cyan text-white rounded-lg hover:bg-neon-cyan/80 disabled:opacity-50 disabled:cursor-not-allowed transition-all-smooth neon-cyan"
         >
           <Send className="w-4 h-4" />
         </button>

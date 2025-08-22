@@ -16,8 +16,8 @@ const PipelineDashboard: React.FC<PipelineDashboardProps> = ({ activeStep, setAc
   ];
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
-      <h2 className="text-xl font-semibold text-gray-900 mb-6">Analysis Pipeline</h2>
+    <div className="glass rounded-xl shadow-2xl p-6 neon-blue transition-all-smooth">
+      <h2 className="text-xl font-semibold text-white mb-6">Analysis Pipeline</h2>
       
       <div className="flex items-center justify-between">
         {steps.map((step, index) => {
@@ -36,12 +36,12 @@ const PipelineDashboard: React.FC<PipelineDashboardProps> = ({ activeStep, setAc
               >
                 <div className={`relative p-3 rounded-full transition-all duration-300 ${
                   isCompleted 
-                    ? 'bg-green-100 text-green-600' 
+                    ? 'bg-neon-green/20 text-neon-green neon-green' 
                     : isActive 
-                    ? 'bg-blue-100 text-blue-600 ring-4 ring-blue-200' 
+                    ? 'bg-neon-blue/20 text-neon-blue neon-blue ring-4 ring-neon-blue/30' 
                     : isNext
-                    ? 'bg-orange-100 text-orange-600'
-                    : 'bg-gray-100 text-gray-400'
+                    ? 'bg-neon-orange/20 text-neon-orange'
+                    : 'bg-white/10 text-gray-400'
                 }`}>
                   {isCompleted ? (
                     <CheckCircle className="w-6 h-6" />
@@ -50,23 +50,23 @@ const PipelineDashboard: React.FC<PipelineDashboardProps> = ({ activeStep, setAc
                   )}
                   
                   {isActive && (
-                    <div className="absolute -inset-1 rounded-full border-2 border-blue-600 animate-pulse" />
+                    <div className="absolute -inset-1 rounded-full border-2 border-neon-blue animate-pulse" />
                   )}
                 </div>
                 
                 <div className="text-center mt-3">
                   <h3 className={`font-medium text-sm ${
-                    isActive ? 'text-blue-600' : isCompleted ? 'text-green-600' : 'text-gray-600'
+                    isActive ? 'text-neon-blue' : isCompleted ? 'text-neon-green' : 'text-gray-300'
                   }`}>
                     {step.label}
                   </h3>
-                  <p className="text-xs text-gray-500 mt-1">{step.desc}</p>
+                  <p className="text-xs text-gray-400 mt-1">{step.desc}</p>
                 </div>
               </div>
               
               {index < steps.length - 1 && (
                 <div className={`flex-1 h-0.5 mx-4 transition-all duration-500 ${
-                  index < activeStep ? 'bg-green-400' : 'bg-gray-200'
+                  index < activeStep ? 'bg-neon-green' : 'bg-white/20'
                 }`} />
               )}
             </div>

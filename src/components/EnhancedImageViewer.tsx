@@ -36,21 +36,21 @@ const EnhancedImageViewer: React.FC<EnhancedImageViewerProps> = ({ onEnhancement
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
+    <div className="glass rounded-xl shadow-2xl p-6 transition-all-smooth hover:shadow-neon-orange/20">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-          <Zap className="w-5 h-5 mr-2 text-orange-600" />
+        <h3 className="text-lg font-semibold text-white flex items-center">
+          <Zap className="w-5 h-5 mr-2 text-neon-orange" />
           {translate('ganEnhancement')}
         </h3>
         
         <div className="flex items-center space-x-3">
-          <div className="flex bg-gray-100 rounded-lg p-1">
+          <div className="flex glass-dark rounded-lg p-1">
             <button
               onClick={() => setSelectedImage('pre')}
               className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
                 selectedImage === 'pre' 
-                  ? 'bg-white text-gray-900 shadow-sm' 
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-white/20 text-white shadow-sm' 
+                  : 'text-gray-400 hover:text-white'
               }`}
             >
               Pre-Disaster
@@ -59,8 +59,8 @@ const EnhancedImageViewer: React.FC<EnhancedImageViewerProps> = ({ onEnhancement
               onClick={() => setSelectedImage('post')}
               className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
                 selectedImage === 'post' 
-                  ? 'bg-white text-gray-900 shadow-sm' 
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-white/20 text-white shadow-sm' 
+                  : 'text-gray-400 hover:text-white'
               }`}
             >
               Post-Disaster
@@ -73,31 +73,31 @@ const EnhancedImageViewer: React.FC<EnhancedImageViewerProps> = ({ onEnhancement
         {/* Original Image */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium text-gray-900">{translate('originalImage')}</h4>
+            <h4 className="font-medium text-white">{translate('originalImage')}</h4>
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setZoom(Math.max(50, zoom - 25))}
-                className="p-1 text-gray-500 hover:text-gray-700"
+                className="p-1 text-gray-400 hover:text-white transition-colors"
               >
                 <ZoomOut className="w-4 h-4" />
               </button>
-              <span className="text-sm text-gray-500">{zoom}%</span>
+              <span className="text-sm text-gray-300">{zoom}%</span>
               <button
                 onClick={() => setZoom(Math.min(200, zoom + 25))}
-                className="p-1 text-gray-500 hover:text-gray-700"
+                className="p-1 text-gray-400 hover:text-white transition-colors"
               >
                 <ZoomIn className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setZoom(100)}
-                className="p-1 text-gray-500 hover:text-gray-700"
+                className="p-1 text-gray-400 hover:text-white transition-colors"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
             </div>
           </div>
           
-          <div className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden">
+          <div className="relative aspect-video glass-dark rounded-lg overflow-hidden border border-white/10">
             <img
               src={images.find(img => img.type === selectedImage)?.url}
               alt={`${selectedImage} disaster`}
@@ -110,29 +110,29 @@ const EnhancedImageViewer: React.FC<EnhancedImageViewerProps> = ({ onEnhancement
         {/* Enhanced/Processing */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium text-gray-900">{translate('enhancedImage')}</h4>
+            <h4 className="font-medium text-white">{translate('enhancedImage')}</h4>
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-500">Quality Enhanced</span>
+              <span className="text-sm text-gray-300">Quality Enhanced</span>
             </div>
           </div>
           
-          <div className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden">
+          <div className="relative aspect-video glass-dark rounded-lg overflow-hidden border border-white/10">
             {!showEnhanced ? (
               <div className="flex items-center justify-center h-full">
                 {!isProcessing ? (
                   <button
                     onClick={handleEnhance}
-                    className="flex items-center space-x-2 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
+                    className="flex items-center space-x-2 px-6 py-3 bg-neon-orange text-white rounded-lg hover:bg-neon-orange/80 transition-all-smooth neon-orange"
                   >
                     <Zap className="w-5 h-5" />
                     <span>{translate('startEnhancement')}</span>
                   </button>
                 ) : (
                   <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
-                    <p className="text-gray-600">{translate('processing')}</p>
-                    <div className="w-48 bg-gray-200 rounded-full h-2 mt-3">
-                      <div className="bg-orange-600 h-2 rounded-full animate-pulse" style={{ width: '75%' }}></div>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-neon-orange mx-auto mb-4"></div>
+                    <p className="text-gray-300">{translate('processing')}</p>
+                    <div className="w-48 bg-white/20 rounded-full h-2 mt-3">
+                      <div className="bg-neon-orange h-2 rounded-full animate-pulse" style={{ width: '75%' }}></div>
                     </div>
                   </div>
                 )}
@@ -152,20 +152,20 @@ const EnhancedImageViewer: React.FC<EnhancedImageViewerProps> = ({ onEnhancement
       </div>
 
       {showEnhanced && (
-        <div className="mt-6 flex items-center justify-between p-4 bg-green-50 border border-green-200 rounded-lg">
+        <div className="mt-6 flex items-center justify-between p-4 glass-dark border border-neon-green/30 rounded-lg">
           <div className="flex items-center space-x-3">
             <div className="flex-shrink-0">
-              <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-                <Zap className="w-4 h-4 text-orange-600" />
+              <div className="w-8 h-8 bg-neon-orange/20 rounded-full flex items-center justify-center">
+                <Zap className="w-4 h-4 text-neon-orange" />
               </div>
             </div>
             <div>
-              <h4 className="font-medium text-green-900">{translate('enhancementComplete')}</h4>
-              <p className="text-sm text-green-700">Image quality enhanced with improved clarity and contrast</p>
+              <h4 className="font-medium text-neon-green">{translate('enhancementComplete')}</h4>
+              <p className="text-sm text-gray-300">Image quality enhanced with improved clarity and contrast</p>
             </div>
           </div>
           
-          <button className="flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+          <button className="flex items-center space-x-2 px-4 py-2 bg-neon-green text-white rounded-lg hover:bg-neon-green/80 transition-all-smooth neon-green">
             <Download className="w-4 h-4" />
             <span>{translate('downloadEnhanced')}</span>
           </button>

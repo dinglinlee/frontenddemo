@@ -42,9 +42,9 @@ const DamageSummary: React.FC<DamageSummaryProps> = ({ onSummaryComplete }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
+    <div className="glass rounded-xl shadow-2xl p-6 transition-all-smooth hover:shadow-neon-green/20">
       <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-        <FileText className="w-5 h-5 mr-2 text-green-600" />
+        <FileText className="w-5 h-5 mr-2 text-neon-green" />
         {translate('damageSummary')}
       </h3>
 
@@ -52,21 +52,21 @@ const DamageSummary: React.FC<DamageSummaryProps> = ({ onSummaryComplete }) => {
         <div className="text-center py-8">
           {!isGenerating ? (
             <div>
-              <AlertTriangle className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-500 mb-4">{translate('generateSummaryPrompt')}</p>
+              <AlertTriangle className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+              <p className="text-gray-300 mb-4">{translate('generateSummaryPrompt')}</p>
               <button
                 onClick={handleGenerateSummary}
-                className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                className="px-6 py-3 bg-neon-green text-white rounded-lg hover:bg-neon-green/80 transition-all-smooth neon-green"
               >
                 {translate('generateSummary')}
               </button>
             </div>
           ) : (
             <div>
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-              <p className="text-gray-600 mb-2">{translate('analyzingDamage')}</p>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-neon-green mx-auto mb-4"></div>
+              <p className="text-gray-300 mb-2">{translate('analyzingDamage')}</p>
               <div className="w-48 bg-gray-200 rounded-full h-2 mx-auto">
-                <div className="bg-green-600 h-2 rounded-full animate-pulse" style={{ width: '60%' }}></div>
+                <div className="bg-neon-green h-2 rounded-full animate-pulse" style={{ width: '60%' }}></div>
               </div>
             </div>
           )}
@@ -74,46 +74,46 @@ const DamageSummary: React.FC<DamageSummaryProps> = ({ onSummaryComplete }) => {
       ) : (
         <div className="space-y-6">
           {/* Overall Assessment */}
-          <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+          <div className="p-4 glass-dark border border-red-500/30 rounded-lg">
             <div className="flex items-center justify-between mb-3">
-              <h4 className="font-semibold text-red-900">{translate('overallAssessment')}</h4>
-              <span className="px-2 py-1 bg-red-600 text-white text-xs font-medium rounded">
+              <h4 className="font-semibold text-red-400">{translate('overallAssessment')}</h4>
+              <span className="px-2 py-1 bg-red-500/20 text-red-400 text-xs font-medium rounded border border-red-500/30">
                 {damageData.overall.severity} {translate('severity')}
               </span>
             </div>
             <div className="grid grid-cols-2 gap-3 text-sm">
               <div>
-                <span className="text-red-700">{translate('affectedArea')}: </span>
-                <span className="font-medium">{damageData.overall.affectedArea}</span>
+                <span className="text-red-300">{translate('affectedArea')}: </span>
+                <span className="font-medium text-white">{damageData.overall.affectedArea}</span>
               </div>
               <div>
-                <span className="text-red-700">{translate('damageLevel')}: </span>
-                <span className="font-medium">{damageData.overall.damagePercentage}%</span>
+                <span className="text-red-300">{translate('damageLevel')}: </span>
+                <span className="font-medium text-white">{damageData.overall.damagePercentage}%</span>
               </div>
             </div>
           </div>
 
           {/* Infrastructure Priority */}
           <div>
-            <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-              <Building2 className="w-4 h-4 mr-2" />
+            <h4 className="font-semibold text-white mb-3 flex items-center">
+              <Building2 className="w-4 h-4 mr-2 text-neon-cyan" />
               {translate('infrastructurePriority')}
             </h4>
             <div className="space-y-2">
               {damageData.infrastructure
                 .sort((a, b) => a.priority - b.priority)
                 .map((item, index) => (
-                <div key={index} className="p-3 bg-gray-50 rounded-lg">
+                <div key={index} className="p-3 glass-dark rounded-lg border border-white/10">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center space-x-2">
                       <span className={`w-2 h-2 rounded-full ${
                         item.priority === 1 ? 'bg-red-500' : 'bg-orange-500'
                       }`} />
-                      <span className="font-medium text-sm">{item.type}</span>
+                      <span className="font-medium text-sm text-white">{item.type}</span>
                     </div>
-                    <span className="text-xs text-gray-600">{item.count} {translate('units')}</span>
+                    <span className="text-xs text-gray-400">{item.count} {translate('units')}</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-white/20 rounded-full h-2">
                     <div 
                       className={`h-2 rounded-full ${
                         item.damage > 70 ? 'bg-red-500' : 
@@ -123,7 +123,7 @@ const DamageSummary: React.FC<DamageSummaryProps> = ({ onSummaryComplete }) => {
                     />
                   </div>
                   <div className="flex justify-between mt-1">
-                    <span className="text-xs text-gray-600">{item.damage}% {translate('damaged')}</span>
+                    <span className="text-xs text-gray-400">{item.damage}% {translate('damaged')}</span>
                     <span className={`text-xs font-medium ${
                       item.priority === 1 ? 'text-red-600' : 'text-orange-600'
                     }`}>
@@ -137,28 +137,28 @@ const DamageSummary: React.FC<DamageSummaryProps> = ({ onSummaryComplete }) => {
 
           {/* Population Impact */}
           <div>
-            <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-              <Users className="w-4 h-4 mr-2" />
+            <h4 className="font-semibold text-white mb-3 flex items-center">
+              <Users className="w-4 h-4 mr-2 text-neon-pink" />
               {translate('populationImpact')}
             </h4>
             <div className="grid grid-cols-3 gap-3 text-center">
-              <div className="p-3 bg-blue-50 rounded-lg">
-                <div className="text-lg font-bold text-blue-600">
+              <div className="p-3 glass-dark border border-neon-blue/30 rounded-lg">
+                <div className="text-lg font-bold text-neon-blue">
                   {damageData.population.affected.toLocaleString()}
                 </div>
-                <div className="text-xs text-blue-700">{translate('affected')}</div>
+                <div className="text-xs text-neon-blue/80">{translate('affected')}</div>
               </div>
-              <div className="p-3 bg-orange-50 rounded-lg">
-                <div className="text-lg font-bold text-orange-600">
+              <div className="p-3 glass-dark border border-neon-orange/30 rounded-lg">
+                <div className="text-lg font-bold text-neon-orange">
                   {damageData.population.displaced.toLocaleString()}
                 </div>
-                <div className="text-xs text-orange-700">{translate('displaced')}</div>
+                <div className="text-xs text-neon-orange/80">{translate('displaced')}</div>
               </div>
-              <div className="p-3 bg-red-50 rounded-lg">
+              <div className="p-3 glass-dark border border-red-500/30 rounded-lg">
                 <div className="text-lg font-bold text-red-600">
                   {damageData.population.vulnerable.toLocaleString()}
                 </div>
-                <div className="text-xs text-red-700">{translate('vulnerable')}</div>
+                <div className="text-xs text-red-400">{translate('vulnerable')}</div>
               </div>
             </div>
           </div>
